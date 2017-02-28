@@ -1,12 +1,29 @@
 require './lib/prefix_calculator.rb'
 
-RSpec.describe PrefixCalculator, "#init" do
-  context "Stuff" do
-    it "sums two integers" do
-      calculator = PrefixCalculator.new
+RSpec.describe PrefixCalculator, "Unit Tests:" do
+  calculator = PrefixCalculator.new
+  
+  context "Operands:" do
+    it "#adds two integers" do    
       expect(calculator.solve("filepath", "+ 1 2")).to eq (3)
     end
+    
+    it "#multiplies two integers" do
+      expect(calculator.solve("filepath", "* 2 4")).to eq (8)
+    end
+    
+    it "#divides two integers" do
+      expect(calculator.solve("filepath", "/ 6 2")).to eq (3)
+    end    
+    
   end
+  
+  context "Multiple Inputs:" do
+    it "#adds three integers" do
+      expect(calculator.solve("filepath", "+ 1 2 3")).to eq (6)
+    end
+  end
+
 end
 
 

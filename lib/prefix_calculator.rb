@@ -14,12 +14,16 @@ class PrefixCalculator
       else
         operands.push(cha)
       end
-    end
       
-    print stack
-    puts
-    print operands
-    puts
+      if stack.length == 2
+        b, a = stack.pop, stack.pop  # order matters
+        op = operands.pop
+        result = calculate(a, b, op)
+      end
+        
+    end
+    
+    return result
   end
 
   def calculate(a, b, operator)
