@@ -34,14 +34,19 @@ RSpec.describe PrefixCalculator, "Unit Tests:" do
     it "#multiplies and adds three integers" do
       expect(calculator.solve("filepath", "* 1 + 2 3")).to eq (5)
     end
+    
+    it "#adds and divides four integers" do
+      expect(calculator.solve("filepath", "+ / 8 2 / 6 2")).to eq (7)
+    end
+
+    it "#multiplies and adds four integers" do
+      expect(calculator.solve("filepath", "* + 1 2 + 3 4")).to eq (21)
+    end
+
+    
   end
 
 end
 
 
-# PC.solve("filepath", "+ 1 2") # 3
-# PC.solve("filepath", "* + 2 3 4") # 20 # (2 + 3) * 4 = (5) * 4 = 20
-# PC.solve("filepath", "* 1 + 2 3") # 1 * (2 + 3) = 5
-# PC.solve("filepath", "+ / a b / c d ") # (a / b) + (c / d)
-# PC.solve("filepath", "* + a b + c d") # (a + b) * (c + d)
 # PC.solve("filepath", "- * + a b c d") # ((a + b) * c) - d

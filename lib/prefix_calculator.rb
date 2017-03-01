@@ -11,7 +11,7 @@ class PrefixCalculator
         stack.push(cha.to_i)
       elsif cha =~ /^[a-zA-Z]$/      # ignore letters
       else                           # operator
-        a, b = stack.pop, stack.pop  # order matters
+        a, b = stack.pop, stack.pop 
         op = cha
         result = calculate(a, b, op)
         stack.push(result)
