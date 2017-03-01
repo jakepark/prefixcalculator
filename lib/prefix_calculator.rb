@@ -2,18 +2,20 @@ class PrefixCalculator
   def solve_from_file(filepath)
     input_array = []
     
-    file = File.open(filepath).readlines.each do |line|
+    File.open(filepath).readlines.each do |line|
       input_array.push(line)
     end
-    puts input_array
-    
+        
+    input_array.each do |input|
+      puts solve(input)
+    end
   end
   
   def solve(input)
     stack = []
     
     input = input.reverse.split(" ")
-    
+
     input.each do |cha|        
       if cha =~ /^\d+$/              # operand
         stack.push(cha.to_i)
@@ -26,8 +28,6 @@ class PrefixCalculator
       end  
     end
     
-    # puts "Result: " + result.to_s
-    
     return stack.pop
   end
 
@@ -35,8 +35,6 @@ class PrefixCalculator
     case operator
     when "+"
       return (a + b)
-    # when "-"
-    #   return (a - b)
     when "*"
       return (a * b)
     when "/"
