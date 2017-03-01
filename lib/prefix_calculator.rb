@@ -1,32 +1,26 @@
 class PrefixCalculator
   def solve(filepath, input)
     stack = []
-    operators = []
     
     result = 0
     
-    input = input.split(" ")
+    input = input.reverse.split(" ")
     
     input.each do |cha|
-      if cha =~ /^\d+$/
+      if cha =~ /^\d+$/              # operand
         stack.push(cha.to_i)
-      elsif cha =~ /^[a-zA-Z]$/
-      else
-        operators.push(cha)
-      end
-      
-      if stack.length >= 2
-        b, a = stack.pop, stack.pop  # order matters
-        op = operators.pop
+      elsif cha =~ /^[a-zA-Z]$/      # ignore letters
+      else                           # operator
+        a, b = stack.pop, stack.pop  # order matters
+        op = cha
         result = calculate(a, b, op)
         stack.push(result)
-      end
-        
+      end  
     end
     
     # puts "Result: " + result.to_s
     
-    return result
+    return stack.pop
   end
 
   def calculate(a, b, operator)
