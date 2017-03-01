@@ -1,7 +1,7 @@
 class PrefixCalculator
   def solve(filepath, input)
     stack = []
-    operands = []
+    operators = []
     
     result = 0
     
@@ -12,16 +12,19 @@ class PrefixCalculator
         stack.push(cha.to_i)
       elsif cha =~ /^[a-zA-Z]$/
       else
-        operands.push(cha)
+        operators.push(cha)
       end
       
-      if stack.length == 2
+      if stack.length >= 2
         b, a = stack.pop, stack.pop  # order matters
-        op = operands.pop
+        op = operators.pop
         result = calculate(a, b, op)
+        stack.push(result)
       end
         
     end
+    
+    # puts "Result: " + result.to_s
     
     return result
   end
