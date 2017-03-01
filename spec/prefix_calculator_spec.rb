@@ -5,7 +5,7 @@ RSpec.describe PrefixCalculator, "Unit Tests:" do
   
   context "Operators:" do
     it "#adds two integers" do    
-      expect(calculator.solve("filepath", "+ 1 2")).to eq (3)
+      expect(calculator.solve("./inputs.rb", "+ 1 2")).to eq (3)
     end
     
     it "#multiplies two integers" do
@@ -38,12 +38,11 @@ RSpec.describe PrefixCalculator, "Unit Tests:" do
     it "#adds and divides four integers" do
       expect(calculator.solve("filepath", "+ / 8 2 / 6 2")).to eq (7)
     end
-
+  
     it "#multiplies and adds four integers" do
       expect(calculator.solve("filepath", "* + 1 2 + 3 4")).to eq (21)
     end
-
-    
+  
   end
 
 end

@@ -1,12 +1,20 @@
 class PrefixCalculator
-  def solve(filepath, input)
-    stack = []
+  def solve_from_file(filepath)
+    input_array = []
     
-    result = 0
+    file = File.open(filepath).readlines.each do |line|
+      input_array.push(line)
+    end
+    puts input_array
+    
+  end
+  
+  def solve(input)
+    stack = []
     
     input = input.reverse.split(" ")
     
-    input.each do |cha|
+    input.each do |cha|        
       if cha =~ /^\d+$/              # operand
         stack.push(cha.to_i)
       elsif cha =~ /^[a-zA-Z]$/      # ignore letters
